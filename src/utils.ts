@@ -87,7 +87,7 @@ export function generateSchemeRegexp(scheme: string): RegExp {
   seperators.forEach(
     (sep) => regExp = regExp.replace(new RegExp('\\' + sep.split('').join('\\'), 'g'),
       '\\' + sep.split('').join('\\')));
-  tags.forEach((tag) => regExp = regExp.replace(tag, '[0-9]+'));
+  tags.forEach((tag) => regExp = regExp.replace(tag, '[a-zA-Z0-9_]+'));
 
   return new RegExp(regExp);
 }
