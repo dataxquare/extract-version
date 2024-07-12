@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import { getActionOptions, generateSchemeRegexp, getCurrentVersion } from './utils';
-import collectStats from "gh-action-stats";
+// import collectStats from "gh-action-stats";
 
 async function main() {
   try {
@@ -9,7 +9,7 @@ async function main() {
     const schemeRegExp = generateSchemeRegexp(options.schema);
     const version = await getCurrentVersion(options, schemeRegExp);
     console.info(`[SUCCESS] - found version ${version}`);
-    core.setOutput('version', version)
+    core.setOutput('version', version);
   } catch (e) {
     core.error(e);
     core.setFailed(e.message);
@@ -17,4 +17,6 @@ async function main() {
   }
 }
 
-collectStats(main);
+// TODO: esto se queda siempre cargando en las actions
+// collectStats(main)
+main();
